@@ -56,3 +56,8 @@ O objetivo é aplicar **boas práticas de desenvolvimento front-end**, organizan
   - `editorconfig`: Mantém o estilo de código consistente entre diferentes IDEs.
 
 ---
+
+## Acesse o Projeto Online
+
+Confira a versão publicada do projeto no GitHub Pages através do link:  
+[Web Project Around - GitHub Pages](https://fphellippe.github.io/web_project_around/)
