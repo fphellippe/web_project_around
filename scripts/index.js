@@ -98,7 +98,7 @@ function updateProfileInfo(event) {
   profileProfission.textContent = inputProfission.value;
   closePopup();
 }
-saveButtonProfile.addEventListener("click", updateProfileInfo);
+form.addEventListener("submit", updateProfileInfo);
 
 //add card image
 function addCardImage(event) {

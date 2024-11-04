@@ -7,7 +7,6 @@
   grid-template-columns: repeat(3, 1fr);
   row-gap: 17px;
   column-gap: 20px;
-  min-height: 801.1px;
 }
 
 .elements__element {
@@ -80,6 +79,7 @@
   display: none;
 }
 
+/* Responsividade para telas médias */
 @media screen and (max-width: 1024px) {
   .elements {
     display: grid;
@@ -90,9 +90,13 @@
   }
 }
 
-@media screen and (max-width: 920px) {
+/* Responsividade para telas pequenas (mobile) */
+@media screen and (max-width: 544px) {
   .elements {
-    display: grid;
-    grid-template-columns: repeat(1, 282px);
+      display: grid;
+      grid-template-columns: repeat(1, 282px);
+      row-gap: 17px;
+      column-gap: 20px;
+      justify-content: center;
   }
 }
