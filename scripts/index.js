@@ -17,7 +17,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
   },
   {
-    name: "Parque Nacional da Vanoise ",
+    name: "Parque Nacional da Vanoise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
   },
   {
@@ -25,6 +25,50 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
   },
 ];
+
+// Seleciona o pop-up e seus elementos
+const popupProfile = document.querySelector(".popup-profile");
+const editButton = document.querySelector(".profile__info-button-edit"); // Botão para abrir o pop-up
+const closeButton = document.querySelector(".popup__form-button-close"); // Botão para fechar o pop-up
+const nameInput = document.querySelector("#name"); // Campo de input do nome
+const profissionInput = document.querySelector("#profission"); // Campo de input do "Sobre mim" ou "Profissão"
+
+// Função para abrir o pop-up
+function openPopup() {
+    popupProfile.classList.add("popup_change_display"); // Torna o pop-up visível
+    nameInput.value = document.querySelector(".profile__info-name").textContent; // Preenche o campo com o nome atual
+    profissionInput.value = document.querySelector(".profile__info-profession").textContent; // Preenche o campo com a profissão atual
+}
+
+// Função para fechar o pop-up
+function closePopup() {
+    popupProfile.classList.remove("popup_change_display"); // Esconde o pop-up
+}
+
+// Evento para abrir o pop-up ao clicar no botão de edição
+editButton.addEventListener("click", openPopup);
+
+// Evento para fechar o pop-up ao clicar no botão de fechar
+closeButton.addEventListener("click", closePopup);
+
+// Função para salvar dados do perfil e fechar o pop-up
+function saveProfileData(event) {
+    event.preventDefault(); // Previne o envio padrão do formulário
+
+    // Seleciona os elementos de nome e profissão no perfil
+    const profileName = document.querySelector(".profile__info-name");
+    const profileJob = document.querySelector(".profile__info-profession");
+
+    // Atualiza o conteúdo do perfil com os valores dos inputs
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = profissionInput.value;
+
+    // Fecha o pop-up após salvar os dados
+    closePopup();
+}
+
+// Vincula a função saveProfileData ao evento submit do formulário de edição de perfil
+document.querySelector(".popup__form").addEventListener("submit", saveProfileData);
 
 // Função para criar um cartão com base no template
 function createCard(card) {
