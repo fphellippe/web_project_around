@@ -29,27 +29,38 @@ const initialCards = [
 // Seleciona o pop-up e seus elementos
 const popupProfile = document.querySelector(".popup-profile");
 const editButton = document.querySelector(".profile__info-button-edit"); // Botão para abrir o pop-up
-const closeButton = document.querySelector(".popup__form-button-close"); // Botão para fechar o pop-up
+const closeButton = document.querySelector(".popup__form-button-close"); // Botão "X" para fechar o pop-up sem salvar
 const nameInput = document.querySelector("#name"); // Campo de input do nome
 const profissionInput = document.querySelector("#profission"); // Campo de input do "Sobre mim" ou "Profissão"
 
+// Variáveis para armazenar o estado original do perfil antes de edição
+let originalName = "";
+let originalProfession = "";
+
 // Função para abrir o pop-up
 function openPopup() {
-    // Armazena valores atuais antes de abrir o pop-up
-    nameInput.value = document.querySelector(".profile__info-name").textContent;
-    profissionInput.value = document.querySelector(".profile__info-profession").textContent;
-    popupProfile.classList.add("popup_change_display"); // Torna o pop-up visível
+    // Salva os valores atuais do perfil antes da edição
+    originalName = document.querySelector(".profile__info-name").textContent;
+    originalProfession = document.querySelector(".profile__info-profession").textContent;
+
+    // Preenche os campos do pop-up com os valores atuais
+    nameInput.value = originalName;
+    profissionInput.value = originalProfession;
+
+    // Abre o pop-up
+    popupProfile.classList.add("popup_change_display");
 }
 
 // Função para fechar o pop-up sem salvar alterações
 function closePopup() {
-    popupProfile.classList.remove("popup_change_display"); // Esconde o pop-up
+    // Apenas esconde o pop-up sem alterar os dados do perfil
+    popupProfile.classList.remove("popup_change_display");
 }
 
 // Evento para abrir o pop-up ao clicar no botão de edição
 editButton.addEventListener("click", openPopup);
 
-// Evento para fechar o pop-up ao clicar no botão de fechar
+// Evento para fechar o pop-up ao clicar no botão "X" sem salvar alterações
 closeButton.addEventListener("click", closePopup);
 
 // Função para salvar dados do perfil e fechar o pop-up
