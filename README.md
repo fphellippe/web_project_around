@@ -1,9 +1,9 @@
-# Projeto EUA Around
+# Projeto EUA Around - Sprint 7 (bootcamp tripleten) 
 
 "EUA Around" é um site interativo que permite aos usuários visualizar cartões de locais, curtir fotos, e editar informações de perfil. Este projeto é parte de um ciclo de desenvolvimento com entregas por sprints, e esta documentação descreve a implementação parte no sprint 7 do bootcamp da TripleTen.
 
 ## Visão Geral do Projeto
-
+    
 Este site foi projetado para oferecer uma experiência visual imersiva e interativa, simulando uma plataforma onde os usuários podem explorar e interagir com fotos de locais incríveis.
 
 ## Funcionalidades Implementadas
