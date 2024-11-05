@@ -35,12 +35,13 @@ const profissionInput = document.querySelector("#profission"); // Campo de input
 
 // Função para abrir o pop-up
 function openPopup() {
+    // Armazena valores atuais antes de abrir o pop-up
+    nameInput.value = document.querySelector(".profile__info-name").textContent;
+    profissionInput.value = document.querySelector(".profile__info-profession").textContent;
     popupProfile.classList.add("popup_change_display"); // Torna o pop-up visível
-    nameInput.value = document.querySelector(".profile__info-name").textContent; // Preenche o campo com o nome atual
-    profissionInput.value = document.querySelector(".profile__info-profession").textContent; // Preenche o campo com a profissão atual
 }
 
-// Função para fechar o pop-up
+// Função para fechar o pop-up sem salvar alterações
 function closePopup() {
     popupProfile.classList.remove("popup_change_display"); // Esconde o pop-up
 }
