@@ -89,36 +89,15 @@ const elementsContainer = document.querySelector(".elements");
 
 // Função para renderizar os cartões iniciais
 function renderInitialCards() {
-    initialCards.forEach((card) => {
-        const newCard = createCard(card);
-        elementsContainer.appendChild(newCard);
-    });
-}
-
-// Função para adicionar um novo cartão a partir de um formulário
-function addCard(event) {
-    event.preventDefault();
-
-    const inputTitle = document.querySelector("#title"); // Campo para o título
-    const inputUrl = document.querySelector("#url"); // Campo para o link da imagem
-
-    if (inputTitle.value && inputUrl.value) {
-        const newCardData = {
-            name: inputTitle.value,
-            link: inputUrl.value
-        };
-
-        const newCard = createCard(newCardData);
-        elementsContainer.prepend(newCard);
-
-        inputTitle.value = "";
-        inputUrl.value = "";
+    if (initialCards.length === 0) {
+        elementsContainer.textContent = "Ainda não há cartões";
+    } else {
+        initialCards.forEach((card) => {
+            const newCard = createCard(card);
+            elementsContainer.appendChild(newCard);
+        });
     }
 }
-
-// Seleciona o formulário e configura o evento de submit para adicionar o cartão
-const addCardForm = document.querySelector(".popup__form");
-addCardForm.addEventListener("submit", addCard);
 
 // Renderiza os cartões iniciais ao carregar a página
 renderInitialCards();
