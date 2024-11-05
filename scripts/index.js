@@ -32,55 +32,37 @@ const editButton = document.querySelector(".profile__info-button-edit"); // Bot�
 const closeButton = document.querySelector(".popup__form-button-close"); // Botão "X" para fechar o pop-up sem salvar
 const nameInput = document.querySelector("#name"); // Campo de input do nome
 const profissionInput = document.querySelector("#profission"); // Campo de input do "Sobre mim" ou "Profissão"
+const profileName = document.querySelector(".profile__info-name"); // Elemento de texto do nome no perfil
+const profileJob = document.querySelector(".profile__info-profession"); // Elemento de texto da profissão no perfil
 
-// Variáveis para armazenar o estado original do perfil antes de edição
-let originalName = "";
-let originalProfession = "";
-
-// Função para abrir o pop-up
+// Função para abrir o pop-up e preencher os campos com os valores atuais
 function openPopup() {
-    // Salva os valores atuais do perfil antes da edição
-    originalName = document.querySelector(".profile__info-name").textContent;
-    originalProfession = document.querySelector(".profile__info-profession").textContent;
-
-    // Preenche os campos do pop-up com os valores atuais
-    nameInput.value = originalName;
-    profissionInput.value = originalProfession;
-
-    // Abre o pop-up
-    popupProfile.classList.add("popup_change_display");
+    // Preenche os campos de entrada com os valores atuais do perfil
+    nameInput.value = profileName.textContent;
+    profissionInput.value = profileJob.textContent;
+    // Adiciona a classe para exibir o pop-up
+    popupProfile.classList.add("popup_opened");
 }
 
-// Função para fechar o pop-up sem salvar alterações
+// Função para fechar o pop-up sem salvar
 function closePopup() {
-    // Apenas esconde o pop-up sem alterar os dados do perfil
-    popupProfile.classList.remove("popup_change_display");
+    popupProfile.classList.remove("popup_opened");
 }
 
-// Evento para abrir o pop-up ao clicar no botão de edição
-editButton.addEventListener("click", openPopup);
-
-// Evento para fechar o pop-up ao clicar no botão "X" sem salvar alterações
-closeButton.addEventListener("click", closePopup);
-
-// Função para salvar dados do perfil e fechar o pop-up
+// Função para salvar as alterações e atualizar o perfil
 function saveProfileData(event) {
-    event.preventDefault(); // Previne o envio padrão do formulário
-
-    // Seleciona os elementos de nome e profissão no perfil
-    const profileName = document.querySelector(".profile__info-name");
-    const profileJob = document.querySelector(".profile__info-profession");
-
-    // Atualiza o conteúdo do perfil com os valores dos inputs
+    event.preventDefault(); // Impede o envio padrão do formulário
+    // Atualiza os elementos de texto do perfil com os valores dos inputs
     profileName.textContent = nameInput.value;
     profileJob.textContent = profissionInput.value;
-
-    // Fecha o pop-up após salvar os dados
+    // Fecha o pop-up após salvar
     closePopup();
 }
 
-// Vincula a função saveProfileData ao evento submit do formulário de edição de perfil
-document.querySelector(".popup__form").addEventListener("submit", saveProfileData);
+// Eventos para abrir e fechar o pop-up
+editButton.addEventListener("click", openPopup); // Abre o pop-up ao clicar em "Editar"
+closeButton.addEventListener("click", closePopup); // Fecha o pop-up ao clicar no "X"
+document.querySelector(".popup__form").addEventListener("submit", saveProfileData); // Salva os dados e fecha o pop-up ao clicar em "Salvar"
 
 // Função para criar um cartão com base no template
 function createCard(card) {
@@ -88,10 +70,16 @@ function createCard(card) {
     const cardElement = cardTemplate.querySelector(".elements__element").cloneNode(true);
     const cardImage = cardElement.querySelector(".elements__element-image");
     const cardTitle = cardElement.querySelector(".elements__element-title");
+    const likeButton = cardElement.querySelector(".elements__element-button-heart");
 
     cardImage.src = card.link;
     cardImage.alt = card.name;
     cardTitle.textContent = card.name;
+
+    // Adiciona um evento de clique para o botão de curtir, alternando a classe para o estado ativo
+    likeButton.addEventListener("click", () => {
+        likeButton.classList.toggle("elements__element-button-heart_active");
+    });
 
     return cardElement;
 }
@@ -129,8 +117,8 @@ function addCard(event) {
 }
 
 // Seleciona o formulário e configura o evento de submit para adicionar o cartão
-const form = document.querySelector(".popup__form");
-form.addEventListener("submit", addCard);
+const addCardForm = document.querySelector(".popup__form");
+addCardForm.addEventListener("submit", addCard);
 
 // Renderiza os cartões iniciais ao carregar a página
 renderInitialCards();

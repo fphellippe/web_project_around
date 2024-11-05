@@ -20,6 +20,7 @@
   position: relative;
 }
 
+
 .elements__element-container-card {
   display: flex;
   justify-content: space-between;
@@ -51,6 +52,10 @@
 
 .elements__element-button-heart:hover {
   opacity: 50%;
+}
+
+.elements__element-button-heart:active {
+  color: black;
 }
 
 .elements__element-button-heart {
