@@ -85,8 +85,5 @@
   .elements {
       display: grid;
       grid-template-columns: repeat(1, 282px);
-      row-gap: 17px;
-      column-gap: 20px;
-      justify-content: center;
   }
 }

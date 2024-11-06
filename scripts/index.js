@@ -34,6 +34,7 @@ const nameInput = document.querySelector("#name"); // Campo de input do nome
 const profissionInput = document.querySelector("#profission"); // Campo de input do "Sobre mim" ou "Profissão"
 const profileName = document.querySelector(".profile__info-name"); // Elemento de texto do nome no perfil
 const profileJob = document.querySelector(".profile__info-profession"); // Elemento de texto da profissão no perfil
+const userForm = document.querySelector(".popup__form")
 
 // Função para abrir o pop-up e preencher os campos com os valores atuais
 function openPopup() {
@@ -62,7 +63,7 @@ function saveProfileData(event) {
 // Eventos para abrir e fechar o pop-up
 editButton.addEventListener("click", openPopup); // Abre o pop-up ao clicar em "Editar"
 closeButton.addEventListener("click", closePopup); // Fecha o pop-up ao clicar no "X"
-document.querySelector(".popup__form").addEventListener("submit", saveProfileData); // Salva os dados e fecha o pop-up ao clicar em "Salvar"
+userForm.addEventListener("submit", saveProfileData)
 
 // Função para criar um cartão com base no template
 function createCard(card) {
