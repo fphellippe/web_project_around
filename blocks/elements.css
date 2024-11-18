@@ -20,6 +20,20 @@
   position: relative;
 }
 
+.elements-element-button-trash:hover {
+  opacity: 50%;
+}
+
+.elements-element-button-trash {
+  background: transparent url(/images/button__Trash.png) no-repeat;
+  background-size: contain;
+  width: 18px;
+  height: 19.3px;
+  border: none;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
 
 .elements__element-container-card {
   display: flex;
@@ -52,10 +66,6 @@
 
 .elements__element-button-heart:hover {
   opacity: 50%;
-}
-
-.elements__element-button-heart:active {
-  color: black;
 }
 
 .elements__element-button-heart {

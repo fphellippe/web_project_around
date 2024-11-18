@@ -53,6 +53,50 @@
             </div>
         </div>
 
+ <!--Popup form add image-->
+ <div class="popup popup-image">
+  <div class="popup__container">
+    <h1 class="popup__header">Novo local</h1>
+    <form class="popup__form" novalidate>
+      <button
+        class="popup__form-button-close popup__form-button-img"
+      ></button>
+      <div class="input__wrapper">
+        <input
+          class="popup__form-input"
+          type="text"
+          placeholder="Título"
+          value=""
+          id="tittle"
+          maxlength="30"
+          minlength="2"
+          required
+        />
+        <p class="input__errorMessage"></p>
+      </div>
+      <div class="input__wrapper">
+        <input
+          class="popup__form-input"
+          type="url"
+          placeholder="Link da imagem"
+          value=""
+          id="url"
+          required
+        />
+        <p class="input__errorMessage"></p>
+      </div>
+      <button
+        type="submit"
+        class="popup__form-button-save form__submit"
+        id="add-button"
+        disabled
+      >
+        Criar
+      </button>
+    </form>
+  </div>
+</div>
+
         <!--Popup Image-->
         <div class="popup popup__imgfull">
             <div class="popup__imgfull-card">
@@ -91,6 +135,7 @@
         <section class="elements">
             <template id="element-template">
                 <div class="elements__element">
+                  <button class="elements-element-button-trash"></button>
                     <img
                         src=""
                         alt=""
@@ -100,7 +145,7 @@
                         <h2 class="elements__element-title">Vale de Yosemite</h2>
                         <img
                             class="elements__element-button-heart"
-                            src="./images/elements_element-button-heart-like.png"
+                            src="./images/elements__image-heart-disble.png"
                             alt="botao unlike"
                         />
                     </div>
