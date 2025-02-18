@@ -11,11 +11,11 @@
 </head>
 <body>
     <div class="page">
-        <!--Popup perfil-->
+        <!-- Popup de edição de perfil -->
         <div class="popup popup-profile">
             <div class="popup__container">
                 <h1 class="popup__header">Editar perfil</h1>
-                <form class="popup__form">
+                <form class="popup__form" novalidate>
                     <button type="button" class="popup__form-button-close"></button>
                     <div class="input__wrapper">
                         <input
@@ -36,78 +36,69 @@
                             type="text"
                             placeholder="Sobre mim"
                             value=""
-                            id="profission"
+                            id="profession"
                             maxlength="200"
                             minlength="2"
                             required
                         />
                         <p class="input__errorMessage"></p>
                     </div>
-                    <button
-                        type="submit"
-                        class="popup__form-button-save form__submit"
-                    >
+                    <button type="submit" class="popup__form-button-save form__submit">
                         Salvar
                     </button>
                 </form>
             </div>
         </div>
 
- <!--Popup form add image-->
- <div class="popup popup-image">
-  <div class="popup__container">
-    <h1 class="popup__header">Novo local</h1>
-    <form class="popup__form" novalidate>
-      <button
-        class="popup__form-button-close popup__form-button-img"
-      ></button>
-      <div class="input__wrapper">
-        <input
-          class="popup__form-input"
-          type="text"
-          placeholder="Título"
-          value=""
-          id="tittle"
-          maxlength="30"
-          minlength="2"
-          required
-        />
-        <p class="input__errorMessage"></p>
-      </div>
-      <div class="input__wrapper">
-        <input
-          class="popup__form-input"
-          type="url"
-          placeholder="Link da imagem"
-          value=""
-          id="url"
-          required
-        />
-        <p class="input__errorMessage"></p>
-      </div>
-      <button
-        type="submit"
-        class="popup__form-button-save form__submit"
-        id="add-button"
-        disabled
-      >
-        Criar
-      </button>
-    </form>
-  </div>
-</div>
+        <!-- Popup para adicionar imagem -->
+        <div class="popup popup-image">
+            <div class="popup__container">
+                <h1 class="popup__header">Novo local</h1>
+                <form class="popup__form" novalidate>
+                    <button type="button" class="popup__form-button-close popup__form-button-img"></button>
+                    <div class="input__wrapper">
+                        <input
+                            class="popup__form-input"
+                            type="text"
+                            placeholder="Título"
+                            value=""
+                            id="title"
+                            maxlength="30"
+                            minlength="2"
+                            required
+                        />
+                        <p class="input__errorMessage"></p>
+                    </div>
+                    <div class="input__wrapper">
+                        <input
+                            class="popup__form-input"
+                            type="url"
+                            placeholder="Link da imagem"
+                            value=""
+                            id="url"
+                            required
+                        />
+                        <p class="input__errorMessage"></p>
+                    </div>
+                    <button type="submit" class="popup__form-button-save form__submit" disabled>
+                        Criar
+                    </button>
+                </form>
+            </div>
+        </div>
 
-        <!--Popup Image-->
+        <!-- Popup de imagem ampliada -->
         <div class="popup popup__imgfull">
             <div class="popup__imgfull-card">
                 <div class="popup__imgfull-card-screen">
-                    <button class="popup__imgfull-button-close"></button>
+                    <button type="button" class="popup__imgfull-button-close"></button>
                     <img class="popup__imgfull-imgbig" src="" alt="" />
                     <p class="popup__imgfull-tittle"></p>
                 </div>
             </div>
         </div>
 
+        <!-- Cabeçalho -->
         <header class="header">
             <nav class="header__nav">
                 <img
@@ -118,6 +109,7 @@
             </nav>
         </header>
 
+        <!-- Perfil do usuário -->
         <section class="profile">
             <img
                 src="./images/image__profile.png"
@@ -127,15 +119,17 @@
             <div class="profile__info">
                 <h1 class="profile__info-name">Jacques Cousteau</h1>
                 <p class="profile__info-profession">Explorador</p>
-                <button class="profile__info-button-edit"></button>
+                <button type="button" class="profile__info-button-edit"></button>
             </div>
-            <button class="profile__button"></button>
+            <!-- Botão para adicionar imagem -->
+            <button type="button" class="profile__button"></button>
         </section>
 
+        <!-- Cartões de elementos -->
         <section class="elements">
             <template id="element-template">
                 <div class="elements__element">
-                  <button class="elements-element-button-trash"></button>
+                    <button type="button" class="elements-element-button-trash"></button>
                     <img
                         src=""
                         alt=""
@@ -153,6 +147,7 @@
             </template>
         </section>
 
+        <!-- Rodapé -->
         <footer class="footer">
             <p class="footer__paragraph">&copy; 2024 Around The U.S.</p>
         </footer>

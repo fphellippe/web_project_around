@@ -64,19 +64,24 @@
   overflow: hidden;
 }
 
-.elements__element-button-heart:hover {
-  opacity: 50%;
-}
-
+/* Estilização do botão de curtir */
 .elements__element-button-heart {
   background-size: contain;
   width: 21px;
   height: 19px;
   border: none;
+  cursor: pointer;
+  transition: filter 0.2s ease-in-out;
 }
 
-.elements__element-button-heart-liked {
-  display: none;
+/* Efeito hover do botão de curtir */
+.elements__element-button-heart:hover {
+  opacity: 50%;
+}
+
+/* Novo estilo para o botão curtido */
+.elements__element-button-heart-like {
+  filter: invert(32%) sepia(96%) saturate(749%) hue-rotate(350deg);
 }
 
 /* Responsividade para telas médias */
