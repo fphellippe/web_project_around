@@ -1,55 +1,69 @@
+import { openFullImagPopup } from "./index.js";
+
 export default class Card {
-  constructor(data, templateSelector) {
-    this._name = data.name;
-    this._link = data.link;
-    this._templateSelector = templateSelector;
+  constructor(cardData, template) {
+    this._cardData = cardData;
+    this._template = template;
   }
-
-  _getTemplate() {
-    const cardElement = document
-      .querySelector(this._templateSelector)
-      .content
-      .querySelector('.card')
+  createCard() {
+    const cardTemplate = document.querySelector(this._template).content;
+    const elementCard = cardTemplate
+      .querySelector(".elements__element")
       .cloneNode(true);
-    return cardElement;
-  }
+    elementCard.querySelector(".elements__element-title").textContent =
+      this._cardData.name;
+    elementCard
+      .querySelector(".elements__element-image")
+      .setAttribute("alt", this._cardData.name);
+    elementCard
+      .querySelector(".elements__element-image")
+      .setAttribute("src", this._cardData.link);
+    const cardTrash = elementCard.querySelector(
+      "elements-element-button-trash"
+    );
 
-  _setEventListeners() {
-    this._element.querySelector('.card__like-button').addEventListener('click', () => {
-      this._handleLike();
-    });
+    const elements = document.querySelector(".elements");
+    elements.prepend(elementCard);
 
-    this._element.querySelector('.card__delete-button').addEventListener('click', () => {
-      this._handleDelete();
-    });
+    const openImgFull = document.querySelector(".popup__imgfull-imgbig");
+    const openImgFullTittle = document.querySelector(".popup__imgfull-tittle");
+    //botao like
+    elementCard
+      .querySelector(".elements__element-button-heart")
+      .addEventListener("click", (event) => {
+        if (
+          event.target.getAttribute("src") ===
+          "./images/elements__image-heart-disble.png"
+        ) {
+          return event.target.setAttribute(
+            "src",
+            "./images/elements_element-button-heart-like.png"
+          );
+        }
+        return event.target.setAttribute(
+          "src",
+          "./images/elements__image-heart-disble.png"
+        );
+      });
 
-    this._element.querySelector('.card__image').addEventListener('click', () => {
-      this._handlePreview();
-    });
-  }
+    //remove card
+    elementCard
+      .querySelector(".elements-element-button-trash")
+      .addEventListener("click", (event) => {
+        event.target.parentElement.remove();
+      });
 
-  _handleLike() {
-    this._element.querySelector('.card__like-button').classList.toggle('card__like-button_active');
-  }
+    //Abrir/fechar PopupImgFull
+    elementCard
+      .querySelector(".elements__element-image")
+      .addEventListener("click", (event) => {
+        console.log(event.target);
+        openImgFull.setAttribute("alt", this._cardData.name);
+        openImgFull.setAttribute("src", this._cardData.link);
+        openImgFullTittle.textContent = this._cardData.name;
+        openFullImagPopup();
+      });
 
-  _handleDelete() {
-    this._element.remove();
-    this._element = null;
-  }
-
-  _handlePreview() {
-    // Função para abrir o modal de imagem
-    openImagePopup(this._link, this._name);
-  }
-
-  generateCard() {
-    this._element = this._getTemplate();
-    this._element.querySelector('.card__title').textContent = this._name;
-    const imageElement = this._element.querySelector('.card__image');
-    imageElement.src = this._link;
-    imageElement.alt = this._name;
-
-    this._setEventListeners();
-    return this._element;
+    return elementCard;
   }
 }

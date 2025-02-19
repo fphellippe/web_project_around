@@ -7,6 +7,7 @@
   grid-template-columns: repeat(3, 1fr);
   row-gap: 17px;
   column-gap: 20px;
+  min-height: 801.1px;
 }
 
 .elements__element {
@@ -64,27 +65,21 @@
   overflow: hidden;
 }
 
-/* Estilização do botão de curtir */
+.elements__element-button-heart:hover {
+  opacity: 50%;
+}
+
 .elements__element-button-heart {
   background-size: contain;
   width: 21px;
   height: 19px;
   border: none;
-  cursor: pointer;
-  transition: filter 0.2s ease-in-out;
 }
 
-/* Efeito hover do botão de curtir */
-.elements__element-button-heart:hover {
-  opacity: 50%;
+.elements__element-button-heart-liked {
+  display: none;
 }
 
-/* Novo estilo para o botão curtido */
-.elements__element-button-heart-like {
-  filter: invert(32%) sepia(96%) saturate(749%) hue-rotate(350deg);
-}
-
-/* Responsividade para telas médias */
 @media screen and (max-width: 1024px) {
   .elements {
     display: grid;
@@ -95,10 +90,9 @@
   }
 }
 
-/* Responsividade para telas pequenas (mobile) */
-@media screen and (max-width: 544px) {
+@media screen and (max-width: 920px) {
   .elements {
-      display: grid;
-      grid-template-columns: repeat(1, 282px);
+    display: grid;
+    grid-template-columns: repeat(1, 282px);
   }
 }
