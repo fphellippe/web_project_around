@@ -1,83 +1,113 @@
-# Web Project Around - Sprint 11
+# Projeto: Web Project Around - Sprint 11
 
-## 📌 Sobre o Projeto
-Este projeto é uma aplicação web interativa que permite aos usuários adicionar, curtir e visualizar imagens em pop-ups. Ele segue princípios modernos de desenvolvimento web, como Programação Orientada a Objetos (POO), modularização e boas práticas de acessibilidade.
+## 📌 Descrição
+Este projeto é uma aplicação web interativa que permite aos usuários adicionar, remover e visualizar cartões com imagens, além de editar suas informações pessoais. O sistema foi refatorado seguindo princípios de Programação Orientada a Objetos (POO) para garantir modularidade e escalabilidade.
 
 ## 🚀 Funcionalidades
-- Criar cartões de imagem dinâmicos.
-- Exibir imagens em um pop-up ao clicar no cartão.
-- Implementação de botão de Like funcional.
+- Adicionar novos cartões com imagens e descrições.
+- Excluir cartões.
+- Curtir cartões.
+- Abrir imagens em um modal.
+- Editar e salvar informações do usuário.
 - Validação de formulários.
-- Layout responsivo seguindo metodologia BEM.
-- Código modular utilizando classes ES6.
+- Fechar pop-ups com clique externo e tecla `Esc`.
 
-## 📁 Estrutura do Projeto
-A estrutura do projeto segue um padrão modularizado:
+## 🏗️ Estrutura do Projeto
+A organização do código segue uma arquitetura modular, com classes separadas para cada funcionalidade principal. A estrutura de arquivos é a seguinte:
 
 ```
-web_project_around/
-│── blocks/           # Arquivos CSS para os blocos BEM
-│── images/           # Imagens utilizadas no projeto
-│── pages/            # Páginas HTML adicionais
-│── scripts/          # Código JavaScript modularizado
-│   │── index.js      # Arquivo principal de execução
-│   │── utils.js      # Funções auxiliares
-│   │── Card.js       # Classe para criação de cartões
-│   │── FormValidation.js  # Classe para validação de formulários
-│── index.html        # Página principal do projeto
-│── README.md         # Documentação do projeto
-│── .gitignore        # Arquivos ignorados pelo Git
-│── .editorconfig     # Configuração do editor
-│── favicon.ico       # Ícone do site
+📂 web_project_around/
+├── 📄 index.html
+├── 📂 blocks/
+├── 📂 page/
+│   ├── index.css
+│   ├── index.js
+├── 📂 images/
+├── 📂 components/
+│   ├── Card.js
+│   ├── FormValidator.js
+│   ├── UserInfo.js
+│   ├── Section.js
+│   ├── Popup.js
+│   ├── PopupWithForm.js
+│   ├── PopupWithImage.js
+├── 📄 README.md
 ```
 
 ## 🛠️ Tecnologias Utilizadas
-- **HTML5** e **CSS3** (Metodologia BEM)
-- **JavaScript (ES6+)**
-- **Modularização com JS**
-- **Programação Orientada a Objetos (POO)**
-- **Git/GitHub**
+- **HTML5** - Estrutura do projeto.
+- **CSS3** - Estilização com metodologia BEM.
+- **JavaScript (ES6+)** - Funcionalidades dinâmicas e POO.
 
-## 🖥️ Instalação e Execução
-### 1️⃣ Clonar o Repositório
-```bash
-git clone https://github.com/fphellippe/web_project_around.git
-```
+## 📌 Classes Implementadas
 
-### 2️⃣ Acessar o Diretório do Projeto
-```bash
-cd web_project_around
-```
+### `Section`
+Gerencia e renderiza listas de elementos na página.
 
-### 3️⃣ Rodar o Servidor Local
-Para executar a aplicação corretamente com módulos JavaScript, utilize o Live Server:
+- **Métodos:**
+  - `renderItems()` - Renderiza todos os itens.
+  - `addItem(element)` - Adiciona um item ao contêiner.
 
-```bash
-code .  # (Opcional) Abre o projeto no VSCode
-```
+### `Popup`
+Controla a exibição e fechamento das janelas pop-up.
 
-Caso tenha o Live Server instalado, basta abrir o `index.html` com ele.
+- **Métodos:**
+  - `open()` - Abre o pop-up.
+  - `close()` - Fecha o pop-up.
+  - `_handleEscClose(event)` - Fecha com tecla `Esc`.
+  - `setEventListeners()` - Adiciona eventos de fechamento.
 
-## 🔧 Como Utilizar
-1. **Adicionar um novo cartão**: Preencha o formulário e adicione um cartão à lista.
-2. **Curtir um cartão**: Clique no botão de coração para marcar como curtido.
-3. **Visualizar imagem ampliada**: Clique em um cartão para abrir o pop-up com a imagem em tamanho maior.
-4. **Fechar pop-ups**: Clique fora da janela ou pressione `Esc`.
+### `PopupWithImage`
+Extensão de `Popup` para exibir imagens em um modal.
 
-## 🏗️ Estrutura dos Arquivos JS
-- **Card.js**: Classe responsável pela criação de cartões.
-- **FormValidation.js**: Classe que implementa validação de formulários.
-- **utils.js**: Funções auxiliares, como abrir e fechar pop-ups.
-- **index.js**: Script principal que inicializa o projeto.
+- **Métodos:**
+  - `open(name, link)` - Abre a imagem com descrição.
 
-## 👥 Contribuição
-Contribuições são bem-vindas! Para contribuir:
-1. Faça um fork do projeto.
-2. Crie uma branch (`git checkout -b feature-nova`).
-3. Commit suas alterações (`git commit -m 'Adiciona nova funcionalidade'`).
-4. Envie um push (`git push origin feature-nova`).
-5. Abra um Pull Request.
+### `PopupWithForm`
+Extensão de `Popup` para gerenciar formulários.
 
-## 📜 Licença
-Este projeto está sob a licença MIT. Sinta-se livre para modificá-lo e distribuí-lo conforme necessário.
+- **Métodos:**
+  - `_getInputValues()` - Coleta dados dos inputs.
+  - `setEventListeners()` - Adiciona eventos de submissão.
+  - `close()` - Fecha e limpa o formulário.
 
+### `UserInfo`
+Gerencia as informações do usuário na interface.
+
+- **Métodos:**
+  - `getUserInfo()` - Obtém os dados do usuário.
+  - `setUserInfo(data)` - Atualiza as informações do usuário.
+
+### `Card`
+Gerencia os cartões exibidos na página.
+
+- **Métodos:**
+  - `createCard()` - Retorna o elemento do cartão.
+  - `handleLikeClick()` - Gerencia o botão curtir.
+  - `handleDeleteClick()` - Remove o cartão.
+
+## 📌 Padrões e Boas Práticas
+✔ Código estruturado seguindo **POO** e **BEM**.  
+✔ Uso adequado de **camelCase** para nomes de variáveis e funções.  
+✔ Separação de responsabilidades em arquivos distintos.  
+✔ Uso de **const** e **let** de forma adequada.  
+✔ Eliminação de código duplicado e uso de funções reutilizáveis.
+
+## 🛠️ Como Executar o Projeto
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/fphellippe/web_project_around.git
+   ```
+2. Acesse o diretório do projeto:
+   ```sh
+   cd web_project_around
+   ```
+3. Abra o arquivo `index.html` em seu navegador.
+
+## 📌 Melhorias Futuras
+- Implementação de um backend para persistência de dados.
+- Melhorias na acessibilidade.
+- Adição de animações CSS para melhor experiência do usuário.
+
+---
+📌 **Desenvolvido por: [Phellippe Fernandes]** 🚀
