@@ -1,16 +1,18 @@
-# Projeto: Web Project Around - Sprint 11
+# Projeto: EUA Afora - Sprint 12
 
 ## 📌 Descrição
-Este projeto é uma aplicação web interativa que permite aos usuários adicionar, remover e visualizar cartões com imagens, além de editar suas informações pessoais. O sistema foi refatorado seguindo princípios de Programação Orientada a Objetos (POO) para garantir modularidade e escalabilidade.
+Este projeto é uma aplicação web interativa chamada **EUA Afora**, conectada a um servidor externo via API. Ele permite aos usuários visualizar cartões de paisagens, curtir, adicionar e remover cartões, bem como editar e salvar informações de perfil e avatar. O sistema foi desenvolvido utilizando Programação Orientada a Objetos (POO) e segue padrões modernos de modularização e responsividade.
 
 ## 🚀 Funcionalidades
-- Adicionar novos cartões com imagens e descrições.
-- Excluir cartões.
-- Curtir cartões.
-- Abrir imagens em um modal.
-- Editar e salvar informações do usuário.
-- Validação de formulários.
-- Fechar pop-ups com clique externo e tecla `Esc`.
+- Carregamento dinâmico do perfil do usuário via API
+- Listagem de cartões armazenados no servidor
+- Adição de novos cartões (nome + imagem)
+- Exclusão de cartões com confirmação
+- Curtir e descurtir cartões
+- Edição de nome, profissão e avatar do usuário
+- Feedback visual ao usuário com botões “Salvando...”
+- Validação de formulários com mensagens dinâmicas
+- Fechamento de pop-ups com `Esc` e clique externo
 
 ## 🏗️ Estrutura do Projeto
 A organização do código segue uma arquitetura modular, com classes separadas para cada funcionalidade principal. A estrutura de arquivos é a seguinte:
@@ -24,6 +26,7 @@ A organização do código segue uma arquitetura modular, com classes separadas 
 │   ├── index.js
 ├── 📂 images/
 ├── 📂 components/
+│   ├── Api.js
 │   ├── Card.js
 │   ├── FormValidator.js
 │   ├── UserInfo.js
@@ -31,6 +34,7 @@ A organização do código segue uma arquitetura modular, com classes separadas 
 │   ├── Popup.js
 │   ├── PopupWithForm.js
 │   ├── PopupWithImage.js
+│   ├── PopupWithConfirmation.js
 ├── 📄 README.md
 ```
 
@@ -104,10 +108,5 @@ Gerencia os cartões exibidos na página.
    ```
 3. Abra o arquivo `index.html` em seu navegador.
 
-## 📌 Melhorias Futuras
-- Implementação de um backend para persistência de dados.
-- Melhorias na acessibilidade.
-- Adição de animações CSS para melhor experiência do usuário.
-
 ---
-📌 **Desenvolvido por: [Phellippe Fernandes]** 🚀
+📌 **Desenvolvido por: [Phellippe Fernandes] — Projeto EUA Afora (TripleTen)** 🚀
